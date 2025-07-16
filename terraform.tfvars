@@ -1,0 +1,7 @@
+project_id=""
+network ="gke-network"
+region = "europe-west1"
+cluster_name ="k8s-cluster"
+ip_range_pods_name ="ip-range-pods"
+ip_range_services_name ="ip-range-services"
+subnetwork = "gke-subnet"
