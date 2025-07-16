@@ -1,4 +1,4 @@
-project_id=""
+project_id="my-project"
 network ="gke-network"
 region = "europe-west1"
 cluster_name ="k8s-cluster"
