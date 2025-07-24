@@ -1,40 +1,37 @@
-module "dev_cluster" {
-    source     = "./main"
-    env_name   = "dev"
-    project_id = "${var.project_id}"
-    instance_type = "e2-medium"
-    region = var.region
-    network = var.network
-    ip_range_pods_name      = var.ip_range_pods_name
-    ip_range_services_name  = var.ip_range_services_name
-    subnetwork=var.subnetwork
-    cluster_name = var.cluster_name
+module "vpc" {
+  source = "./modules/vpc"
+
+  vpc_name        = var.vpc_name
+  subnet_name     = var.subnet_name
+  gke_node_cidr   = var.gke_node_cidr
+  pods_cidr       = var.pods_cidr
+  svc_cidr        = var.svc_cidr
+  region          = var.region
+  global_ip_name  = var.global_ip_name
+  nat_router_name = var.nat_router_name
+  nat_name        = var.nat_name
 }
 
-module "staging_cluster" {
-    source     = "./main"
-    env_name   = "staging"
-    project_id = "${var.project_id}"
-    instance_type = "e2-medium"
-    region = var.region
-    network = var.network
-    ip_range_pods_name=var.ip_range_pods_name
-    ip_range_services_name=var.ip_range_services_name
-    subnetwork=var.subnetwork
-    cluster_name = var.cluster_name
+module "gke" {
+  source = "./modules/gke_cluster"
+
+  cluster_name                  = var.cluster_name
+  region                        = var.region
+  network                       = module.vpc.network_id
+  subnetwork                    = module.vpc.subnet_self_link
+  node_machine_type             = var.node_machine_type
+  node_disk_size_gb             = var.node_disk_size_gb
+  node_count                    = var.node_count
+  pods_secondary_range_name     = var.pods_secondary_range_name
+  services_secondary_range_name = var.services_secondary_range_name
+  master_ipv4_cidr_block        = var.master_ipv4_cidr_block
+  enable_private_nodes          = true
+  enable_private_endpoint       = false
+  deletion_protection           = false
+  master_authorized_networks = [
+    {
+      cidr_block   = var.cidr_block
+      display_name = var.display_name
+    }
+  ]
 }
-
-module "prod_cluster" {
-    source     = "./main"
-    env_name   = "prod"
-    project_id = "${var.project_id}"
-    instance_type = "n2-highmem-2"
-    region = var.region
-    network = var.network
-    ip_range_pods_name=var.ip_range_pods_name
-    ip_range_services_name=var.ip_range_services_name
-    subnetwork=var.subnetwork
-    cluster_name = var.cluster_name
-}
-
-
