@@ -1,4 +1,4 @@
-project_id                    = "xxxxxxxxxx"
+project_id                    = "iqms-qolsys-71725"
 cluster_name                  = "gke-cluster"
 vpc_name                      = "dev-vpc-network"
 subnet_name                   = "private-subnet"
@@ -12,8 +12,19 @@ nat_name                      = "dev-nat"
 pods_secondary_range_name     = "pods-subnet"
 node_count                    = "1"
 node_disk_size_gb             = "50"
-node_machine_type             = "e2.medium"
+node_machine_type             = "custom-2-4096"
 services_secondary_range_name = "services-subnet"
 master_ipv4_cidr_block        = "172.16.0.0/28"
 cidr_block                    = "10.0.1.0/32"
 display_name                  = "dev-ip_address"
+db_node_count                 = "1"
+db_node_disk_size_gb          = "50"
+db_node_machine_type          = "custom-2-4096"
+roles = ["roles/container.nodeServiceAccount",
+  "roles/logging.logWriter",
+  "roles/monitoring.metricWriter",
+  "roles/compute.viewer",
+"roles/iam.serviceAccountUser"]
+service_account_email = "gkecluster@iqms-qolsys-71725.iam.gserviceaccount.com"
+service_name          = "gke-dev-sa"
+account_id            = "gke-dev-cluster"

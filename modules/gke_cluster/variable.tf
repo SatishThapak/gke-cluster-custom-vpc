@@ -77,3 +77,16 @@ variable "master_authorized_networks" {
 variable "deletion_protection" {
   
 }
+variable "db_node_count" {
+  
+}
+variable "db_node_disk_size_gb" {
+  
+}
+variable "db_node_machine_type" { }
+variable "account_id" { }
+variable "service_name" { }
+variable "roles" { }
+variable "service_account_email" {
+  
+}

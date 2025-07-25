@@ -17,3 +17,10 @@ variable "services_secondary_range_name" {}
 variable "master_ipv4_cidr_block" {}
 variable "cidr_block" {}
 variable "display_name" {}
+variable "db_node_count" {}
+variable "db_node_machine_type" {}
+variable "db_node_disk_size_gb" {}
+variable "account_id" {}
+variable "service_name" {}
+variable "roles" {}
+variable "service_account_email" {}
