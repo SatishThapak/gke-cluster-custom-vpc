@@ -1,32 +1,34 @@
-project_id                    = "xxxxxxxxxx"
-cluster_name                  = "gke-cluster"
-vpc_name                      = "dev-vpc-network"
-subnet_name                   = "private-subnet"
-gke_node_cidr                 = "10.0.0.0/24"
-pods_cidr                     = "10.10.0.0/16"
-svc_cidr                      = "10.20.0.0/20"
-region                        = "us-central1"
-global_ip_name                = "dev-global-ip"
-nat_router_name               = "dev-nat-router"
-nat_name                      = "dev-nat"
-pods_secondary_range_name     = "pods-subnet"
-node_count                    = "1"
-node_disk_size_gb             = "50"
-node_machine_type             = "custom-2-4096"
-services_secondary_range_name = "services-subnet"
-master_ipv4_cidr_block        = "172.16.0.0/28"
-cidr_block                    = "10.0.1.0/32"
-display_name                  = "dev-ip_address"
-db_node_count                 = "1"
-db_node_disk_size_gb          = "50"
-db_node_machine_type          = "custom-2-4096"
+project_id                    = ""
+cluster_name                  = ""
+vpc_name                      = ""
+subnet_name                   = ""
+gke_node_cidr                 = ""
+pods_cidr                     = ""
+svc_cidr                      = ""
+region                        = ""
+global_ip_name                = ""
+nat_router_name               = ""
+nat_name                      = ""
+pods_secondary_range_name     = ""
+node_count                    = 0
+node_disk_size_gb             = 0
+node_machine_type             = ""
+services_secondary_range_name = ""
+master_ipv4_cidr_block        = ""
+cidr_block                    = ""
+display_name                  = ""
+db_node_count                 = 0
+db_node_disk_size_gb          = 0
+db_node_machine_type          = ""
 
-roles = ["roles/container.nodeServiceAccount",
+roles = [
+  "roles/container.nodeServiceAccount",
   "roles/logging.logWriter",
   "roles/monitoring.metricWriter",
   "roles/compute.viewer",
-  "roles/iam.serviceAccountUser"]
+  "roles/iam.serviceAccountUser"
+]
 
-service_account_email = "satish_gkecluster@serviceaccount.com"
-service_name          = "gke-dev-sa"
-account_id            = "gke-dev-cluster"
+service_account_email = ""
+service_name          = ""
+account_id            = ""
